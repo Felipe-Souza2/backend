@@ -1,0 +1,19 @@
+{
+  "name": "fundamentos-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node --watch src/server.js  "
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Felipe-Souza2/backend.git"
+  },
+  "keywords": [],
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Felipe-Souza2/backend/issues"
+  },
+  "homepage": "https://github.com/Felipe-Souza2/backend#readme"
+}
