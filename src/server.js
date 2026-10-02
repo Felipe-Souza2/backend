@@ -1,21 +1,21 @@
 import http from 'node:http'
 import { json } from '../src/middlewares/json.js'
 import { routes } from '../src/middlewares/routes.js'
-// Stateful=> Sempre vai ter algum tipo de informacão guardada em memória 
-// dependendo das mesmas para que ela continue funcionando
-// Stateless => diferente da Statteful ela nao guarda nada na memória e sim em 
-// dispositivos externos como banco de dados ou arquivos de texto
-//Cabeçalhos (requisição/resposta) => Metadados
-// UUID => Unique Universal ID (para gerar id unicos de forma randomica)
+import test from 'node:test'
 
 const server = http.createServer(async(req,res) => {
   const {method, url} = req
   await json(req, res)
 
   const route = routes.find(route => {
-    return route.method === method && route.path === url
+    return route.method === method && route.path.test(url)
   })
   if (route) {
+    const routeParams = req.url.match(route.path)
+
+    req.params = {...routeParams.groups}
+    
+    
     return route.handler(req, res)
   }
 
