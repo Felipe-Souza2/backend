@@ -10,7 +10,7 @@ export const routes = [
     method: 'GET',
     path: buildRoutePath('/users'),
     handler: (req, res) => {
-     const {search} = req.query
+      const {search} = req.query
 
       const users = database.select('users', search ? {
         name: search,
